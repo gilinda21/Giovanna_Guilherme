@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Guilherme & Giovanna</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Great+Vibes&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+    
+
+/* FUNDO COM IMAGEM + OVERLAY (CORRIGIDO) */
+
+body{
+margin:0;
+font-family:'Inter',sans-serif;
+color:#0b1f3a;
+
+background:
+linear-gradient(rgba(255,255,255,0.6), rgba(255,255,255,0.7)),
+url('fundo.jpeg');
+
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+}
+
+/* HEADER */
+
+header{
+height:90vh;
+background:linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.25)),
+url('topo-casal.jpg.jpeg');
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+text-align:center;
+color:white;
+animation:fadeHero 2.5s ease forwards;
+}
+
+@keyframes fadeHero{
+0%{opacity:0; transform:scale(1.05);}
+100%{opacity:1; transform:scale(1);}
+}
+
+.hero h1{
+font-family:'Cormorant Garamond',serif;
+font-size:3.5rem;
+letter-spacing:4px;
+margin:0;
+}
+
+.hero span{
+font-family:'Great Vibes',cursive;
+font-size:4.5rem;
+}
+
+.data-topo{
+font-family:'Allura',cursive;
+font-weight:300;
+font-size:1.1rem;
+letter-spacing:2px;
+margin-top:10px;
+opacity:0.9;
+}
+
+/* BOTÃO */
+
+.music-btn{
+margin-top:20px;
+background:white;
+color:#0b1f3a;
+padding:10px 25px;
+border-radius:30px;
+border:none;
+cursor:pointer;
+transition:.3s;
+}
+
+.music-btn:hover{
+transform:translateY(-2px);
+box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* SEÇÕES */
+
+.section{
+padding:90px 20px;
+text-align:center;
+animation:fadeUp 1s ease both;
+}
+
+@keyframes fadeUp{
+from{opacity:0; transform:translateY(30px);}
+to{opacity:1; transform:translateY(0);}
+}
+
+/* FOTOS */
+
+.photo-cards{
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+margin-bottom:30px;
+}
+
+.circle{
+width:140px;
+height:140px;
+border-radius:50%;
+background-size:cover;
+background-position:center;
+border:2px solid #0b1f3a;
+box-shadow:0 0 0 3px rgba(212,175,55,0.25);
+transition:.4s;
+}
+
+.circle:hover{
+transform:scale(1.05);
+}
+
+/* VERSÍCULO */
+
+.verse{
+font-family:'Cormorant Garamond',serif;
+font-weight:300;
+font-size:1.2rem;
+
+max-width:700px;
+margin:30px auto;
+
+line-height:1.6;
+text-align:center; /* 👈 ESSENCIAL */
+
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+}
+
+.enter-btn{
+margin-top:30px;
+background:#0b1f3a;
+color:white;
+padding:12px 28px;
+border-radius:30px;
+border:1px solid rgba(212,175,55,0.6);
+cursor:pointer;
+font-family:'Cormorant Garamond', serif;
+font-size:1rem;
+letter-spacing:1px;
+transition:.3s;
+}
+
+.enter-btn:hover{
+transform:translateY(-3px);
+box-shadow:0 10px 25px rgba(0,0,0,0.2);
+background:white;
+color:#0b1f3a;
+}
+
+
+/* ESTADO INICIAL (ESCONDIDO) */
+
+.reveal{
+opacity:0;
+transform:translateY(40px);
+transition:all 1s ease;
+}
+
+/* QUANDO APARECE */
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+/* CARD DATA */
+
+.data-card{
+background:#0b1f3a;
+color:white;
+max-width:800px;
+margin:auto;
+padding:40px;
+border-radius:20px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:30px;
+border:1px solid rgba(212,175,55,0.5);
+box-shadow:0 15px 30px rgba(0,0,0,0.2);
+transition:.3s;
+}
+
+.data-card:hover{transform:translateY(-4px);}
+
+.data-card p{
+font-family:'Cormorant Garamond',serif;
+font-weight:300;
+font-size:1.2rem;
+}
+
+.data-right{text-align:left;}
+
+.divider{
+width:1px;
+height:80px;
+background:rgba(212,175,55,0.6);
+}
+
+/* MAPA */
+
+.map{
+width:100%;
+max-width:700px;
+height:350px;
+margin:20px auto;
+border-radius:15px;
+overflow:hidden;
+display:flex;
+border:1px solid rgba(212,175,55,0.4);
+}
+
+.map iframe{
+width:100%;
+height:100%;
+border:0;
+}
+
+
+
+.intro{
+padding:100px 20px 60px;
+text-align:center;
+}
+
+/* TÍTULO */
+
+.typing{
+font-family:'Cormorant Garamond', serif;
+font-size:3rem;
+letter-spacing:4px;
+white-space:nowrap;
+overflow:hidden;
+border-right:2px solid #0b1f3a;
+
+width:0;
+margin:auto;
+
+animation:typing 3s steps(30, end) forwards, blink 0.8s infinite;
+}
+
+/* ANIMAÇÃO DIGITAÇÃO */
+
+@keyframes typing{
+from{width:0}
+to{width:100%}
+}
+
+@keyframes blink{
+50%{border-color:transparent;}
+}
+
+/* TEXTO */
+
+.fade-text{
+margin-top:25px;
+font-family:'Cormorant Garamond', serif;
+font-size:1.3rem;
+max-width:600px;
+line-height:1.6;
+margin-left:auto;
+margin-right:auto;
+
+opacity:0;
+animation:fadeIn 2s ease forwards;
+animation-delay:3s;
+}
+
+@keyframes fadeIn{
+to{opacity:1;}
+}
+
+/* TÍTULO COM EFEITO DIGITAÇÃO */
+
+.typing{
+font-family:'Cormorant Garamond', serif;
+font-size:3.5rem;
+letter-spacing:4px;
+white-space:nowrap;
+overflow:hidden;
+border-right:2px solid #0b1f3a;
+
+width:0;
+animation:typing 3s steps(30, end) forwards, blink 0.8s infinite;
+}
+
+@keyframes typing{
+from{width:0}
+to{width:100%}
+}
+
+@keyframes blink{
+50%{border-color:transparent;}
+}
+
+/* HISTÓRIA */
+
+.historia-container{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:40px;
+max-width:1000px;
+margin:auto;
+flex-wrap:wrap;
+}
+
+/* IMAGEM */
+
+.historia-img{
+width:45%;
+height:350px;
+background:url('historia.jpg'); /* 👈 coloca sua foto aqui */
+background-size:cover;
+background-position:center;
+border-radius:16px;
+box-shadow:0 15px 30px rgba(0,0,0,0.15);
+transition:.4s;
+}
+
+.historia-img:hover{
+transform:scale(1.02);
+}
+
+/* TEXTO */
+
+.historia-text{
+width:45%;
+text-align:left;
+}
+
+.historia-text h2{
+font-family:'Cormorant Garamond', serif;
+font-size:2.5rem;
+margin-bottom:15px;
+}
+
+.historia-text p{
+font-family:'Cormorant Garamond', serif;
+font-size:1.2rem;
+line-height:1.7;
+font-weight:300;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+.historia-container{
+flex-direction:column;
+}
+
+.historia-img,
+.historia-text{
+width:100%;
+}
+
+.historia-text{
+text-align:center;
+}
+
+}
+
+/* TEXTO COM FADE */
+
+.fade-text{
+margin-top:25px;
+font-family:'Cormorant Garamond', serif;
+font-size:1.3rem;
+max-width:600px;
+line-height:1.6;
+
+opacity:0;
+animation:fadeIn 2s ease forwards;
+animation-delay:3s;
+}
+
+@keyframes fadeIn{
+to{opacity:1;}
+}
+
+/* BOTÕES */
+
+.btn{
+background:white;
+color:#0b1f3a;
+padding:12px 24px;
+border-radius:30px;
+text-decoration:none;
+display:inline-block;
+margin-top:15px;
+border:2px solid #0b1f3a;
+transition:.3s;
+}
+
+.btn:hover{
+background:#0b1f3a;
+color:white;
+transform:translateY(-2px);
+}
+
+/* DRESS CODE */
+
+.dress-card{
+background:#0b1f3a;
+color:white;
+max-width:800px;
+margin:auto;
+padding:35px;
+border-radius:20px;
+display:flex;
+align-items:center;
+gap:25px;
+border:1px solid rgba(212,175,55,0.5);
+}
+
+.dress-img{
+width:45%;
+height:320px;
+background:url('dresscode.png') no-repeat center;
+background-size:contain;
+border-radius:12px;
+
+}
+
+.dress-text{
+width:55%;
+text-align:left;
+line-height:1.6;
+font-family:'Cormorant Garamond',serif;
+font-weight:300;
+}
+
+/* CARDS */
+
+.card-horizontal{
+background:#0b1f3a;
+color:white;
+max-width:750px;
+margin:40px auto;
+padding:35px;
+border-radius:14px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:20px;
+border:1px solid rgba(212,175,55,0.5);
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+.data-card,
+.card-horizontal,
+.dress-card{
+flex-direction:column;
+text-align:center;
+}
+
+.dress-img,
+.dress-text{
+width:100%;
+}
+
+.divider{
+width:60px;
+height:1px;
+}
+
+}
+
+/* INTRO TELA CHEIA */
+
+.intro{
+height:100vh;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+text-align:center;
+}
+
+/* SITE ESCONDIDO */
+
+#site-content{
+opacity:0;
+transform:scale(1.05);
+transition:all 1.2s ease;
+}
+
+/* SITE APARECE */
+
+#site-content.active{
+opacity:1;
+transform:scale(1);
+}
+
+/* INTRO SOME */
+
+.intro.hide{
+opacity:0;
+transform:scale(0.95);
+transition:all 1s ease;
+pointer-events:none;
+}
+/* ========================= */
+/* 📱 RESPONSIVIDADE MOBILE */
+/* ========================= */
+
+@media(max-width:768px){
+
+/* HEADER */
+.hero h1{
+font-size:2.2rem;
+}
+
+.hero span{
+font-size:3rem;
+}
+
+.data-topo{
+font-size:0.9rem;
+}
+
+/* INTRO */
+.typing{
+font-size:2rem;
+}
+
+.fade-text{
+font-size:0.95rem;
+padding:0 10px;
+}
+
+/* CARDS DE FOTO */
+.circle{
+width:100px;
+height:100px;
+}
+
+/* VERSÍCULO */
+.verse{
+font-size:1rem;
+padding:0 15px;
+}
+
+/* DATA CARD */
+.data-card{
+flex-direction:column;
+text-align:center;
+padding:25px;
+}
+
+.data-right{
+text-align:center;
+}
+
+.divider{
+width:60px;
+height:1px;
+}
+
+/* MAPA */
+.map{
+height:250px;
+}
+
+/* DRESS CODE */
+.dress-card{
+flex-direction:column;
+}
+
+.dress-img{
+width:100%;
+height:300px;
+background-size:contain;
+background-repeat:no-repeat;
+background-position:center;
+}
+
+.dress-text{
+width:100%;
+text-align:center;
+}
+
+/* CARDS HORIZONTAIS */
+.card-horizontal{
+flex-direction:column;
+text-align:center;
+padding:25px;
+}
+
+/* BOTÕES */
+.btn{
+width:100%;
+max-width:250px;
+}
+
+/* HISTÓRIA (se tiver seção) */
+.historia{
+flex-direction:column;
+text-align:center;
+}
+
+.historia img{
+width:100%;
+margin-bottom:20px;
+}
+
+}
+
+</style>
+</head>
+
+
+<body>
+    <body>
+        
+<audio id="musica" src="violinosite.mp3"></audio>
+<!-- INTRO PRIMEIRO -->
+<section class="intro">
+  <h1 class="typing">VOCÊ FOI CONVIDADO</h1>
+
+  <p class="fade-text">
+    Queremos celebrar esse momento tão especial ao seu lado.<br>
+    Sua presença tornará esse dia ainda mais inesquecível para nós.
+  </p>
+
+  <button class="enter-btn" onclick="entrarConvite()">
+    Entrar no convite
+  </button>
+</section>
+
+<!-- SITE TODO ESCONDIDO -->
+<div id="site-content">
+
+  <!-- AGORA SIM o header fica aqui dentro -->
+  <header>
+    <div class="hero">
+      <h1>Guilherme <span>&</span> Giovanna</h1>
+    </div>
+  </header>
+
+  <!-- TODO O RESTO DO SEU SITE -->
+  
+</div>
+
+</body>
+
+    
+
+
+
+
+<section class="section">
+<div class="photo-cards">
+<div class="circle" style="background-image:url('foto1.jpg')"></div>
+<div class="circle" style="background-image:url('foto2.jpg')"></div>
+<div class="circle" style="background-image:url('foto3.jpg')"></div>
+</div>
+
+</section>
+<div class="verse">
+“[...] para que todos vejam e saibam que a mão do Senhor fez isso.”<br>
+<strong>Isaías 41:20</strong>
+</div>
+</section>
+
+
+<section class="section historia reveal">
+
+  <div class="historia-container">
+
+    <div class="historia-img reveal"></div>
+
+    <div class="historia-text reveal">
+      <h2>Nossa História</h2>
+      <p>
+        Tudo começou de uma forma simples, mas com um propósito maior do que imaginávamos.
+        Entre encontros, risadas e momentos inesquecíveis, fomos construindo algo único,
+        guiados pelo amor e pela vontade de compartilhar a vida juntos.
+        <br><br>
+        Hoje, com o coração cheio de gratidão, celebramos cada passo dessa jornada
+        e nos preparamos para o nosso “sim” mais importante.
+      </p>
+    </div>
+
+  </div>
+
+
+<section class="section">
+<div class="data-card">
+<div>
+<h3>Data & Hora</h3>
+<p>17/07/2027, sábado às 15:30</p>
+</div>
+
+<div class="divider"></div>
+
+<div class="data-right">
+<p>
+Estamos preparando cada detalhe com muito carinho para viver esse momento único ao lado de pessoas especiais como você.
+</p>
+</div>
+</div>
+</section>
+
+<section class="section">
+<h2>Local do Evento</h2>
+
+<div class="map">
+<iframe src="https://maps.google.com/maps?q=Chácara%20Fagundes%203%20São%20Paulo&z=15&output=embed"></iframe>
+</div>
+
+<a href="https://www.google.com/maps/search/?api=1&query=Chácara+Fagundes+3+São+Paulo" target="_blank" class="btn">
+Abrir no Google Maps
+</a>
+</section>
+
+<section class="section">
+<h2>DRESS CODE</h2>
+
+<div class="dress-card">
+<div class="dress-img"></div>
+
+<div class="dress-text">
+<h3>TRAJES SOCIAS</h3>
+Sugerimos trajes sofisticados em tons suaves e clássicos.<br><br>
+Evite branco, off-white e cores muito claras.
+</div>
+</div>
+</section>
+
+<section class="section">
+<h2>LISTA DE PRESENTES</h2>
+
+<div class="card-horizontal">
+<div>
+Sua presença já é o nosso maior presente.<br><br>
+Mas, caso deseje nos presentear, preparamos uma lista com carinho.
+</div>
+
+<a href="https://happygiftlist.com/pt/lista-de-desejos/gi5rstu6" target="_blank" class="btn">
+Acessar Lista
+</a>
+</div>
+</section>
+
+<section class="section">
+<h2>Confirmação de Presença</h2>
+
+<div class="card-horizontal">
+<div>Pedimos a gentileza de confirmar sua presença.</div>
+
+<a href="https://wa.me/13982297098" target="_blank" class="btn">
+Confirmar Presença
+</a>
+</div>
+</section>
+
+<script>
+function toggleMusic(){
+const musica = document.getElementById("musica");
+if(musica.paused){musica.play();}else{musica.pause();}
+}
+</script>
+<script>
+
+function toggleMusic(){
+const musica = document.getElementById("musica");
+if(musica.paused){musica.play();}else{musica.pause();}
+}
+
+/* ANIMAÇÃO AO ROLAR */
+
+function revealOnScroll(){
+const reveals = document.querySelectorAll(".reveal");
+
+reveals.forEach(el => {
+const windowHeight = window.innerHeight;
+const elementTop = el.getBoundingClientRect().top;
+
+if(elementTop < windowHeight - 100){
+el.classList.add("active");
+}
+});
+}
+
+window.addEventListener("scroll", revealOnScroll);
+
+
+
+
+
+
+</script>
+<script>
+
+function entrarConvite(){
+
+  const musica = document.getElementById("musica");
+  if(musica){musica.play().catch(()=>{});}
+
+  const intro = document.querySelector(".intro");
+  const site = document.getElementById("site-content");
+
+  intro.classList.add("hide");
+
+  setTimeout(()=>{
+    site.classList.add("active");
+
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+
+  },500);
+
+  setTimeout(()=>{
+    intro.style.display="none";
+  },1200);
+
+}
+
+</script>
+</body>
+</html>
