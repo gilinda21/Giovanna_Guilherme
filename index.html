@@ -50,16 +50,17 @@ animation:fadeHero 2.5s ease forwards;
 100%{opacity:1; transform:scale(1);}
 }
 
-.hero h1{
+
+f.hero h1{
 font-family:'Cormorant Garamond',serif;
-font-size:3.5rem;
+font-size:clamp(1.8rem, 5vw, 3.5rem);
 letter-spacing:4px;
 margin:0;
 }
 
 .hero span{
 font-family:'Great Vibes',cursive;
-font-size:4.5rem;
+font-size:clamp(2.5rem, 6vw, 4.5rem);
 }
 
 .data-topo{
@@ -439,6 +440,11 @@ width:45%;
 height:320px;
 background:url('dresscode.png') no-repeat center;
 background-size:contain;
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+text-align:center;
 border-radius:12px;
 
 }
@@ -449,6 +455,14 @@ text-align:left;
 line-height:1.6;
 font-family:'Cormorant Garamond',serif;
 font-weight:300;
+}
+
+*{
+box-sizing:border-box;
+}
+
+html, body{
+overflow-x:hidden;
 }
 
 /* CARDS */
